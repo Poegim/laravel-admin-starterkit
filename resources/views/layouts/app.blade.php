@@ -21,20 +21,34 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @livewire('navigation-menu')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+            @livewire('navigation-menu')
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+
+                <div class="flex flex-col md:flex-row gap-2 w-full mx-auto sm:px-2 lg:px-4">
+
+                    <x-navigation-bar />
+
+                    <div class="w-full">
+                        <!-- Page Heading -->
+                        @if (isset($header))
+                        <div class="w-full mx-auto sm:px-2 lg:px-4 mt-12">
+                            <header class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                                <div class="w-full mx-auto py-6 px-4 sm:px-2 lg:px-4">
+                                    {{ $header }}
+                                </div>
+                            </header>
+                        </div>
+                        @endif
+
+                        {{ $slot }}
+
+                    </div>
+
+                </div>
+
             </main>
         </div>
 
